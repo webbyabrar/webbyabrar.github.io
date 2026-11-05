@@ -326,3 +326,11 @@ html.lenis,html.lenis body{height:auto}
   .trust li:nth-child(n+5){border-bottom:0!important}
   .c3>.card{flex-basis:100%}
 }
+
+/* v3: wider layout, refined wordmark */
+.wrap{max-width:1360px;padding:0 32px}
+.narrow{max-width:900px}
+.logo img{width:38px;height:38px}
+.wm{font-weight:800}
+.wm i{font-weight:500}
+@media (max-width:600px){.wrap{padding:0 16px}}
