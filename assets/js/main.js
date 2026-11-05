@@ -68,6 +68,8 @@
   // hero avatar intro
   const av = document.getElementById('avatar'), vid = document.getElementById('introVideo'),
         play = document.getElementById('playIntro'), note = document.getElementById('videoNote');
+  // Safari cannot show WebM transparency: use the MP4 there
+  if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) { vid.src = vid.dataset.mp4; }
   const stop = () => { vid.pause(); vid.currentTime = 0; av.classList.remove('playing'); play.setAttribute('aria-expanded', false); };
   play.addEventListener('click', () => {
     av.classList.add('playing'); play.setAttribute('aria-expanded', true);
