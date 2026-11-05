@@ -399,3 +399,30 @@ html.lenis,html.lenis body{height:auto}
 .form>label:last-of-type{flex:1;display:flex;flex-direction:column}
 .form>label:last-of-type textarea{flex:1;min-height:150px}
 .fs-bg{height:220px}
+
+/* v7: hero fits the screen */
+.hero{min-height:calc(100svh - 70px);display:flex;align-items:center;padding:36px 0 64px}
+.hero>.wrap{width:100%}
+h1{font-size:clamp(36px,4.6vw,60px)}
+.stage{height:min(calc(100svh - 190px),620px);width:auto;max-width:100%;margin-left:auto}
+.avatar{max-width:none;display:flex;justify-content:flex-end}
+@media (max-width:860px){.hero{min-height:0;padding:32px 0 56px}.stage{height:auto;width:100%;margin:0 auto}.avatar{justify-content:center}.avatar:not(.playing){display:none}}
+
+/* v7: form section, full photo + notification, form on the right */
+.form-grid{grid-template-columns:1fr 1fr;align-items:start;gap:48px}
+.form-side{display:block;background:none;border:0;border-radius:0;overflow:visible;min-height:0}
+.fs-photo{position:relative;margin:0;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.fs-photo img{width:100%;height:auto;aspect-ratio:900/672;object-fit:cover}
+.notif{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;gap:12px;background:rgba(14,16,20,.88);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:12px 16px;animation:pop 4s var(--ease) infinite}
+.notif b{display:block;font-size:14.5px}.notif small{color:var(--text-2);font-size:12.5px}
+.n-ic{width:34px;height:34px;border-radius:50%;background:#25D366;display:grid;place-items:center}
+.n-ic svg{width:18px;height:18px;fill:#fff}
+@keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.form-side .contact-list{margin-top:22px}
+.form-main h2::after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:var(--amber);margin-top:18px}
+.form-main .form{margin-top:26px}
+.hp{position:absolute;left:-9999px}
+.form .btn[disabled]{opacity:.6;cursor:wait}
+.form-note.ok{color:var(--teal)}.form-note.err{color:#ff8a7a}
+@media (max-width:860px){.form-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.notif{animation:none}}

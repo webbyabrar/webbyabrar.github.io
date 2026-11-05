@@ -82,11 +82,39 @@
   vid.addEventListener('ended', stop);
   document.getElementById('closeIntro').addEventListener('click', stop);
 
-  // quote form: send details to WhatsApp (no backend needed)
-  document.getElementById('quoteForm').addEventListener('submit', e => {
+  // quote form: email via Web3Forms + WhatsApp alert via CallMeBot
+  const WEB3FORMS_KEY = '';      // web3forms.com access key (public by design)
+  const CALLMEBOT_KEY = '';      // callmebot.com apikey for +923019194202
+  const form = document.getElementById('quoteForm'), fnote = document.getElementById('formNote');
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const f = new FormData(e.target), v = k => (f.get(k) || '').toString().trim();
-    const msg = `New project enquiry\nName: ${v('name')}\nAgency: ${v('agency')}\nEmail: ${v('email')}\nWhatsApp: ${v('whatsapp')}\nPlatform: ${v('platform')}\nPages: ${v('pages')}\nDetails: ${v('details')}`;
-    window.open('https://wa.me/923019194202?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    if (!form.reportValidity()) return;
+    const f = new FormData(form), v = k => (f.get(k) || '').toString().trim();
+    if (f.get('botcheck')) return;
+    const msg = `New project enquiry
+Name: ${v('name')}
+Agency: ${v('agency')}
+Email: ${v('email')}
+WhatsApp: ${v('whatsapp')}
+Platform: ${v('platform')}
+Pages: ${v('pages')}
+Details: ${v('details')}`;
+    if (!WEB3FORMS_KEY) { window.open('https://wa.me/923019194202?text=' + encodeURIComponent(msg), '_blank', 'noopener'); return; }
+    const btn = form.querySelector('button[type=submit]'); btn.disabled = true; fnote.className = 'form-note'; fnote.textContent = 'Sending...';
+    try {
+      f.append('access_key', WEB3FORMS_KEY);
+      f.append('subject', `New enquiry from ${v('name')} (${v('agency') || 'WebByAbrar site'})`);
+      f.append('from_name', 'WebByAbrar Website');
+      const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: f, headers: { Accept: 'application/json' } });
+      const j = await r.json();
+      if (!j.success) throw new Error(j.message);
+      if (CALLMEBOT_KEY) {
+        const alert = `New form entry on WebByAbrar from ${v('name')} (${v('email')}). Full details sent to your email.`;
+        fetch(`https://api.callmebot.com/whatsapp.php?phone=923019194202&text=${encodeURIComponent(alert)}&apikey=${CALLMEBOT_KEY}`, { mode: 'no-cors' }).catch(() => {});
+      }
+      form.reset(); fnote.className = 'form-note ok'; fnote.textContent = 'Thank you. Your project details have been sent. We will reply within working hours.';
+    } catch (err) {
+      fnote.className = 'form-note err'; fnote.textContent = 'Something went wrong. Please message us on WhatsApp instead.';
+    } finally { btn.disabled = false; }
   });
 })();

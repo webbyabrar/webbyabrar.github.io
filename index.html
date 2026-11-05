@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="icon" href="favicon.svg?v=6" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/style.css?v=6">
+<link rel="icon" href="favicon.svg?v=7" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 <script type="application/ld+json">
 {
@@ -50,7 +50,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="WebByAbrar home"><img src="assets/img/webbyabrar-logo.svg?v=6" width="38" height="38" alt="WebByAbrar logo"><span class="wm">Web<i>By</i>Abrar</span></a>
+    <a class="logo" href="#top" aria-label="WebByAbrar home"><img src="assets/img/webbyabrar-logo.svg?v=7" width="38" height="38" alt="WebByAbrar logo"><span class="wm">Web<i>By</i>Abrar</span></a>
     <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     <nav id="menu" class="menu" aria-label="Main">
       <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#faqs">FAQs</a>
@@ -79,10 +79,10 @@
     </div>
     <div class="avatar" id="avatar">
       <div class="stage">
-        <img class="poster" src="assets/video/muhammad-abrar-intro-poster.webp?v=6" width="540" height="960" alt="Muhammad Abrar, white label web developer for SEO agencies, standing by a desk" fetchpriority="high">
-        <video id="introVideo" playsinline preload="none" aria-label="Muhammad Abrar introduction video" data-mp4="assets/video/muhammad-abrar-intro.mp4?v=6">
-          <source src="assets/video/muhammad-abrar-intro.webm?v=6" type="video/webm">
-          <source src="assets/video/muhammad-abrar-intro.mp4?v=6" type="video/mp4">
+        <img class="poster" src="assets/video/muhammad-abrar-intro-poster.webp?v=7" width="540" height="960" alt="Muhammad Abrar, white label web developer for SEO agencies, standing by a desk" fetchpriority="high">
+        <video id="introVideo" playsinline preload="none" aria-label="Muhammad Abrar introduction video" data-mp4="assets/video/muhammad-abrar-intro.mp4?v=7">
+          <source src="assets/video/muhammad-abrar-intro.webm?v=7" type="video/webm">
+          <source src="assets/video/muhammad-abrar-intro.mp4?v=7" type="video/mp4">
         </video>
         <button class="stage-play" id="stagePlay" aria-label="Play intro video"><span class="play-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="sp-label">Watch My Intro</span></button>
         <button class="close" id="closeIntro" aria-label="Close intro video">×</button>
@@ -294,19 +294,22 @@
 <section class="s-b" id="contact-form">
   <div class="wrap form-grid">
     <div class="form-side">
-      <img class="fs-bg" src="assets/img/muhammad-abrar-replying-to-agency-on-whatsapp.webp" width="900" height="672" loading="lazy" alt="Muhammad Abrar replying to an agency project enquiry on WhatsApp">
-      <div class="fs-content">
-      <span class="tag rv">Get a Quote</span>
-      <h2 class="rv">Start Your Next Website Project</h2>
-      <p class="rv">Tell us about your client's project and you will get a reply with a timeline and quote. Prefer a quick chat? Message us on WhatsApp.</p>
+      <figure class="fs-photo rv">
+        <img src="assets/img/muhammad-abrar-replying-to-agency-on-whatsapp.webp" width="900" height="672" loading="lazy" alt="Muhammad Abrar replying to an agency project enquiry on WhatsApp">
+        <span class="notif"><span class="n-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg></span><span><b>New project enquiry</b><small>Reply usually the same day</small></span></span>
+      </figure>
       <ul class="contact-list rv">
         <li><span>Email</span><a href="mailto:abrarofficial03@gmail.com">abrarofficial03@gmail.com</a></li>
         <li><span>WhatsApp</span><a href="https://wa.me/923019194202" target="_blank" rel="noopener">+92 301 9194202</a></li>
         <li><span>Hours</span>Mon to Sat, 10 AM to 10 PM PKT</li>
       </ul>
-      </div>
     </div>
-    <form class="form rv" id="quoteForm">
+    <div class="form-main">
+      <span class="tag rv">Get a Quote</span>
+      <h2 class="rv">Start Your Next Website Project</h2>
+      <p class="rv">Tell us about your client's project and you will get a reply with a timeline and quote. Prefer a quick chat? Message us on WhatsApp.</p>
+    <form class="form rv" id="quoteForm" novalidate>
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="row2">
         <label>Your Name<input name="name" required autocomplete="name"></label>
         <label>Agency Name<input name="agency" autocomplete="organization"></label>
@@ -321,8 +324,9 @@
       </div>
       <label>Project Details<textarea name="details" rows="4" required></textarea></label>
       <button class="btn btn-1 full" type="submit">Send Project Details<svg class="ic ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <p class="form-note">Your details open in WhatsApp so you get a faster reply.</p>
+      <p class="form-note" id="formNote">Your details go straight to our inbox. We reply within working hours.</p>
     </form>
+    </div>
   </div>
 </section>
 
@@ -330,7 +334,7 @@
 
 <footer class="foot">
   <div class="wrap foot-grid">
-    <div><a class="logo" href="#top" aria-label="WebByAbrar home"><img src="assets/img/webbyabrar-logo.svg?v=6" width="38" height="38" alt="WebByAbrar logo"><span class="wm">Web<i>By</i>Abrar</span></a><p>White label web design and development for SEO and digital marketing agencies.</p></div>
+    <div><a class="logo" href="#top" aria-label="WebByAbrar home"><img src="assets/img/webbyabrar-logo.svg?v=7" width="38" height="38" alt="WebByAbrar logo"><span class="wm">Web<i>By</i>Abrar</span></a><p>White label web design and development for SEO and digital marketing agencies.</p></div>
     <div><h2 class="fh">Quick Links</h2><ul><li><a href="#top">Home</a></li><li><a href="/about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="/contact">Contact</a></li><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms-and-conditions">Terms and Conditions</a></li></ul></div>
     <div><h2 class="fh">Services</h2><ul><li>Website Design and Development</li><li>On-Page SEO</li><li>Internal Linking</li><li>Image Optimization</li><li>Schema Markup</li></ul></div>
     <div><h2 class="fh">Contact</h2><ul><li><a href="mailto:abrarofficial03@gmail.com">abrarofficial03@gmail.com</a></li><li><a href="https://wa.me/923019194202" target="_blank" rel="noopener">+92 301 9194202 (WhatsApp)</a></li><li>Mon to Sat, 10 AM to 10 PM PKT</li><li>100% online, no physical office</li></ul></div>
@@ -340,6 +344,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="assets/js/main.js?v=6" defer></script>
+<script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>
