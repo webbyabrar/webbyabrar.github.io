@@ -71,11 +71,13 @@
   // Safari cannot show WebM transparency: use the MP4 there
   if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) { vid.src = vid.dataset.mp4; }
   const stop = () => { vid.pause(); vid.currentTime = 0; av.classList.remove('playing'); play.setAttribute('aria-expanded', false); };
-  play.addEventListener('click', () => {
+  const start = () => {
     av.classList.add('playing'); play.setAttribute('aria-expanded', true);
     if (matchMedia('(max-width:860px)').matches) av.scrollIntoView({ behavior: 'smooth', block: 'center' });
     vid.play().catch(() => { note.hidden = false; });
-  });
+  };
+  play.addEventListener('click', start);
+  document.getElementById('stagePlay').addEventListener('click', start);
   vid.addEventListener('error', () => { note.hidden = false; }, true);
   vid.addEventListener('ended', stop);
   document.getElementById('closeIntro').addEventListener('click', stop);
